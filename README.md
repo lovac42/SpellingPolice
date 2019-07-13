@@ -10,15 +10,17 @@ Requires at least anki 2.1.10+
 
 
 ## Dictionaries:
+It uses .bdic files which is used by chrome.
 
-Download english .bdic dictionary files from: https://github.com/cvsuser-chromium/third_party_hunspell_dictionaries  
+You can download some of them here: https://github.com/cvsuser-chromium/third_party_hunspell_dictionaries  
 
 Here is one example file: https://github.com/cvsuser-chromium/third_party_hunspell_dictionaries/blob/master/en-US-3-0.bdic  
-
 
 Create "dictionaries" folder and put .bdic file into this folder:
 
 <img src="https://github.com/lovac42/SpellingPolice/blob/master/screenshots/folder.png?raw=true">  
+
+Once you have it setup, edit spellpopo.py and add your dictionary file to the list.
 
 
 ## Screenshots:
