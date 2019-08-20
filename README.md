@@ -1,5 +1,7 @@
 ## Spelling Police: Tough love spell checker for the editor
 
+<img src="https://github.com/lovac42/SpellingPolice/blob/master/screenshots/intro.png?raw=true">
+
 ## About:
 If you read "The Shallows", it describes the over reliance of spell checkers in modern software. Well, the over reliance of a lot of things in modern tools... But the basic idea is that auto-correct is making us stupid.
 
