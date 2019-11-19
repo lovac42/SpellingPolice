@@ -8,7 +8,9 @@ If you read "The Shallows", it describes the over reliance of spell checkers in 
 This addon follows that idea and is off by default, but when turned on, spelling police nags you and points out all your spelling errors. It does not fix spelling mistakes for you. That's your job. This tough love approach will help you to learn to spell better.
 
 ## Requirements:
-Requires at least anki 2.1.10+
+Requires at least Anki 2.1.10+
+Requires at least Anki 2.1.10+
+Requires at least Anki 2.1.10+
 
 
 ## Dictionaries:
@@ -22,7 +24,10 @@ Create "dictionaries" folder and put .bdic file into this folder:
 
 <img src="https://github.com/lovac42/SpellingPolice/blob/master/screenshots/folder.png?raw=true">  
 
-Once you have it setup, edit spellpopo.py and add your dictionary file to the list.
+Once you have it setup, edit spellpopo.py and add your dictionary file to the list.  
+
+<img src="https://github.com/lovac42/SpellingPolice/blob/master/screenshots/editDictName.png?raw=true">  
+
 
 
 ## Screenshots:
