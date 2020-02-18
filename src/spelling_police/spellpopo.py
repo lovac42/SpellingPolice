@@ -26,16 +26,24 @@ from aqt.qt import *
 from aqt.webview import AnkiWebView
 from anki.hooks import wrap, addHook
 from anki.lang import _
+from functools import partial
 
+def replaceMisspelledWord(page, sug_word):
+    page.replaceMisspelledWord(sug_word)
 
 def onContextMenuEvent(editor, menu):
     p=editor._page.profile()
+    data=editor._page.contextMenuData()
     b=p.isSpellCheckEnabled()
     menu.addSeparator()
     a=menu.addAction(_("Spelling Police"))
     a.setCheckable(True)
     a.setChecked(b)
     a.triggered.connect(lambda:p.setSpellCheckEnabled(not b))
+    if b:
+        for sug_word in data.spellCheckerSuggestions():
+            a=menu.addAction(_(sug_word))
+            a.triggered.connect(partial(replaceMisspelledWord, editor._page, sug_word))
 
 addHook("EditorWebView.contextMenuEvent", onContextMenuEvent)
 
