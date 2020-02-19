@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
-# Copyright: (C) 2019 Lovac42
+# Copyright: (C) 2019-2020 Lovac42
 # Support: https://github.com/lovac42/SpellingPolice
 # License: GNU GPL, version 3 or later; http://www.gnu.org/copyleft/gpl.html
-# Version: 0.0.1
 
 
+# TODO:
+#   Auto download and scan files in dict dir
+#   write GUI frame for lang selections
 
 # Enable/Disable as necessary, but avoid language conflicts
 DICT_FILES = {
@@ -18,15 +20,18 @@ DICT_FILES = {
     # "fr-FR-3-0"
 }
 
-CHECK_ON_STARUP = False
-
-
 
 from aqt.qt import *
 from aqt.webview import AnkiWebView
 from anki.hooks import wrap, addHook
 from anki.lang import _
 from functools import partial
+
+from .config import Config
+
+ADDON_NAME='SpellingPolice'
+conf = Config(ADDON_NAME)
+
 
 def replaceMisspelledWord(page, sug_word):
     page.replaceMisspelledWord(sug_word)
@@ -40,17 +45,24 @@ def onContextMenuEvent(editor, menu):
     a.setCheckable(True)
     a.setChecked(b)
     a.triggered.connect(lambda:p.setSpellCheckEnabled(not b))
-    if b:
+    if b and conf.get("duck_mode", False):
+        firstAct=menu.actions()[0]
         for sug_word in data.spellCheckerSuggestions():
-            a=menu.addAction(_(sug_word))
+            a=menu.addAction(sug_word)
+            menu.insertAction(firstAct, a)
             a.triggered.connect(partial(replaceMisspelledWord, editor._page, sug_word))
+            if conf.get("bold_text", True):
+                f=a.font()
+                f.setBold(True)
+                a.setFont(f)
+        menu.insertSeparator(firstAct)
 
 addHook("EditorWebView.contextMenuEvent", onContextMenuEvent)
 
 
 def setupBDIC(web, parent=None):
     p=web._page.profile()
-    p.setSpellCheckEnabled(CHECK_ON_STARUP)
+    p.setSpellCheckEnabled(conf.get("auto_startup", False))
     p.setSpellCheckLanguages(DICT_FILES)
 
 AnkiWebView.__init__=wrap(AnkiWebView.__init__, setupBDIC, "after")
