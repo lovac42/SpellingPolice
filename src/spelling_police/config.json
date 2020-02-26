@@ -1,5 +1,6 @@
 {
 	"auto_startup": false,
 	"duck_mode": false,
-	"bold_text": true
+	"bold_text": true,
+    "check_during_review": false
 }

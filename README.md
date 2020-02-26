@@ -34,3 +34,5 @@ Once you have it setup, edit spellpopo.py and add your dictionary file to the li
 
 <img src="https://github.com/lovac42/SpellingPolice/blob/master/screenshots/cmenu.png?raw=true">  
 
+<img src="https://github.com/lovac42/SpellingPolice/blob/master/screenshots/during_review.png?raw=true">  
+
