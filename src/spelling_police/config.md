@@ -3,6 +3,13 @@
 ## auto_startup
 Spelling popo is turned on by default?
 
+## bold_text
+Display autocorrect suggestions in bold font.
+
+## check_during_review
+Allows spelling checking during review.
+requires addon:Edit field during review (cloze or original).
+
 ## duck_mode
 Turns on autocorrect.
 

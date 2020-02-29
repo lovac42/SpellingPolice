@@ -5,22 +5,12 @@
 
 
 # TODO:
-#   Auto download and scan files in dict dir
-#   write GUI frame for lang selections
+#   Auto download dicts from github
 
-# Enable/Disable as necessary, but avoid language conflicts
-DICT_FILES = {
-    "en-US-3-0",
-    # "en-US-8-0",
-
-    # "en-GB-3-0",
-
-    # Add your beloved dicts here:
-    # "xx-XX-3-0",
-    # "xx-XX-3-0",
-
-    # "fr-FR-3-0"
-}
+# Good news everyone!
+# Dicts config has been moved to GUI manager
+#    Tools > Dictionary Configuration
+# No need to restart or edit anything now.
 
 
 from aqt.qt import *
@@ -30,10 +20,13 @@ from anki.hooks import wrap, addHook
 from anki.lang import _
 from functools import partial
 
+from .dict import DictionaryManager
 from .config import Config
 
 ADDON_NAME='SpellingPolice'
 conf = Config(ADDON_NAME)
+
+dictMan = DictionaryManager()
 
 
 def replaceMisspelledWord(page, sug_word):
@@ -46,7 +39,7 @@ def onContextMenuEvent(web, menu):
     if mw.state == "review":
         if not conf.get("check_during_review", False):
             return
-        p.setSpellCheckLanguages(DICT_FILES)
+        p.setSpellCheckLanguages(dictMan.getDictionaries())
 
     b=p.isSpellCheckEnabled()
     menu.addSeparator()
@@ -75,6 +68,7 @@ addHook("AnkiWebView.contextMenuEvent", onContextMenuEvent)
 def setupBDIC(web, *args, **kwargs):
     p=web._page.profile()
     p.setSpellCheckEnabled(conf.get("auto_startup", False))
-    p.setSpellCheckLanguages(DICT_FILES)
+    p.setSpellCheckLanguages(dictMan.getDictionaries())
 
 AnkiWebView.__init__=wrap(AnkiWebView.__init__, setupBDIC, "after")
+
