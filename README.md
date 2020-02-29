@@ -20,13 +20,16 @@ You can download some of them here: https://github.com/cvsuser-chromium/third_pa
 
 Here is one example file: https://github.com/cvsuser-chromium/third_party_hunspell_dictionaries/blob/master/en-US-3-0.bdic  
 
-Create "dictionaries" folder and put .bdic file into this folder:
+## Setup:
+Go to `Tools > Dictionary Configurations` and click the browse button. Put all your .bdic files into this "dictionaries" folder. You may need to restart the first time after installing new dictionaries.
+
+Once you have it setup, enable or disable the dictionaries of your choice. More than one is allowed, but try to avoid language conflicts (e.g. Chinese and Japanese).
+
+<img src="https://github.com/lovac42/SpellingPolice/blob/master/screenshots/setup.png?raw=true">  
+
+<img src="https://github.com/lovac42/SpellingPolice/blob/master/screenshots/dictMan.png?raw=true">  
 
 <img src="https://github.com/lovac42/SpellingPolice/blob/master/screenshots/folder.png?raw=true">  
-
-Once you have it setup, edit spellpopo.py and add your dictionary file to the list.  
-
-<img src="https://github.com/lovac42/SpellingPolice/blob/master/screenshots/editDictName.png?raw=true">  
 
 
 
