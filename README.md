@@ -12,6 +12,8 @@ Requires at least Anki 2.1.10+
 Requires at least Anki 2.1.10+
 Requires at least Anki 2.1.10+
 
+## Alternate Versions of Anki:
+Alternate versions of Anki uses qt5.9 that requires a special folder called `qtwebengine_dictionaries` to be created in the anki.exe folder. This addon will try to create it, but you will need Read-Write permissions to this folder in order for spell checking to work. The same applies to mac and linux, but the folder location may differ depending on distros.
 
 ## Dictionaries:
 It uses .bdic files which is used by chrome.
