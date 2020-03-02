@@ -7,7 +7,7 @@
 import os
 from aqt import mw
 from aqt.qt import *
-from aqt.utils import openFolder
+from aqt.utils import openFolder, showInfo
 
 from .const import *
 
@@ -80,9 +80,14 @@ class DictionaryDialog(QDialog):
         self.setLayout(layout)
 
     def _update(self):
-        DICT_FILES=os.listdir(DICT_DIR)
-        self.list.clear()
         self._dict = []
+        self.list.clear()
+
+        try:
+            DICT_FILES=os.listdir(DICT_DIR)
+        except FileNotFoundError:
+            showInfo("Missing or no read/write permission to dictionary folder.")
+            return
 
         for d in DICT_FILES:
             if RE_DICT_EXT_ENABLED.search(d):
@@ -98,7 +103,14 @@ class DictionaryDialog(QDialog):
                 self.list.addItem(item)
 
     def _browse(self):
-        openFolder(DICT_DIR)
+        if os.path.exists(DICT_DIR):
+            openFolder(DICT_DIR)
+        elif ALT_BUILD_VERSION:
+            from aqt import moduleDir
+            openFolder(moduleDir)
+
+        if ALT_BUILD_VERSION:
+            showInfo(ALT_BUILD_INSTRUCTIONS, title="Instructions", textFormat="rich")
 
     def _enable(self):
         sel = [i for i in range(self.list.count())
