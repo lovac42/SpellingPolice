@@ -3,7 +3,7 @@ set ZIP=C:\PROGRA~1\7-Zip\7z.exe a -tzip -y -r
 set REPO=spelling_police
 set NAME=Spelling Police
 set PACKID=1410276506
-set VERSION=0.3.1
+set VERSION=0.3.2
 
 
 quick_manifest.exe "%NAME%" "%PACKID%" >%REPO%\manifest.json
