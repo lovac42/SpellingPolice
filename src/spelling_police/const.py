@@ -10,7 +10,13 @@ from aqt.qt import qtminor
 from pathlib import Path
 
 
-ALT_BUILD_VERSION = qtminor < 10
+ADDON_PATH = os.path.dirname(__file__)
+
+ADDON_NAME = "SpellingPolice"
+
+TARGET_STABLE_VERSION = 23
+
+ALT_BUILD_VERSION = qtminor < 10 #true up to 2.1.19?
 
 RE_DICT_EXT_ENABLED = re.compile(r'\.bdic$', re.I)
 
