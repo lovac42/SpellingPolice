@@ -12,7 +12,9 @@ It uses .bdic files which is used by chrome.
 
 You can download some of them here: https://github.com/cvsuser-chromium/third_party_hunspell_dictionaries  
 
-Here is one example file: https://github.com/cvsuser-chromium/third_party_hunspell_dictionaries/blob/master/en-US-3-0.bdic  
+Here is one example file: https://github.com/cvsuser-chromium/third_party_hunspell_dictionaries/blob/master/en-US-3-0.bdic
+
+There are more user-created dictionaries posted in this [issue](https://github.com/lovac42/SpellingPolice/issues/8). 
 
 ## Setup:
 Go to `Tools > Dictionary Configurations` and click the browse button. Put all your .bdic files into this "dictionaries" folder. You may need to restart the first time after installing new dictionaries.
